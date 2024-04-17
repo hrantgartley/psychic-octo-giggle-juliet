@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 let nato = {
     a: "Alpha",
     b: "Bravo",
@@ -29,7 +30,6 @@ let nato = {
 
 $("#submit").on("click", () => {
     convertToNato();
-    clearBox();
 });
 
 /**
@@ -44,7 +44,7 @@ function convertToNato() {
     let natoCodes = inputArray.map((letter) => {
         return nato[letter];
     });
-    $("#output").text(natoCodes.join(" "));
+    $("#output").text(natoCodes.join(" ")).fadeIn(1000);
 }
 
 /**
