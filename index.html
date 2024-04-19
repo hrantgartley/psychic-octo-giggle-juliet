@@ -14,10 +14,23 @@
         <link rel="shortcut icon" href="images/cat.png" type="image/x-icon">
     </head>
     <body>
+        <div id="hamburger" class="d-block d-md-none">
+            &#9776;
+        </div>
+        <nav id="mobile-menu">
+            <ul>
+                <li>
+                    <a href="https://github.com/hrantgartley/psychic-octo-giggle-juliet" target="repo">Repository</a>
+                </li>
+                <li>
+                    <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fhrantgartley.github.io%2Fpsychic-octo-giggle-juliet%2F" target="validate">Validator</a>
+                </li>
+            </ul>
+        </nav>
         <div class="container">
             <main>
                 <div class="mb-3">
-                    <label for="user-input" class="form-label">Enter word here</label>
+                    <label for="user-input" class="form-label">Enter word here to convert to NATO Phonetic</label>
                     <input
                         type="text"
                         id="user-input"
@@ -25,9 +38,14 @@
                         name="user-input"
                     >
                 </div>
-                <button type="submit" id="submit" class="btn btn-success">Submit</button>
+                <button type="submit" id="submit" class="btn btn-success">Add to list</button>
+                <button type="reset" id="reset" class="btn btn-success">Clear list</button>
+                <button type="reset" id="clear" class="btn btn-success">Clear text box</button>
                 <div class="mt-3">
-                    <p id="output" class="fw-bold">Result:&nbsp;</p>
+                    <p id="output" class="fw-bold"></p>
+                </div>
+                <div class="mt-3">
+                    <ul id="previous-entries" class="list-group"></ul>
                 </div>
             </main>
         </div>

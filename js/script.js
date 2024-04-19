@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 let nato = {
     a: "Alpha",
     b: "Bravo",
@@ -28,8 +27,22 @@ let nato = {
     z: "Zulu",
 };
 
-$("#submit").on("click", () => {
+$("#submit").on("click", function () {
+    addToList();
+});
+
+$("#user-input").on("input", function () {
     convertToNato();
+});
+
+$("#reset").on("click", function () {
+    $("#output").fadeOut(1000);
+    clearBox();
+    clearList();
+});
+
+$("#clear").on("click", function () {
+    clearBox();
 });
 
 /**
@@ -42,17 +55,38 @@ function convertToNato() {
     let input = $("#user-input").val().toLowerCase();
     let inputArray = input.split("");
     let natoCodes = inputArray.map((letter) => {
-        return nato[letter];
+        return nato[letter] || letter;
     });
-    $("#output").text(natoCodes.join(" ")).fadeIn(1000);
+    $("#output")
+        .text("Result: " + natoCodes.join(" "))
+        .fadeIn(1000);
+}
+
+/**
+ * Adds the current input text to a list of previous entries.
+ * @function addToList
+ */
+function addToList() {
+    let inputText = $("#user-input").val();
+    let listItem = $("<li>").addClass("list-group-item").text(inputText);
+    $("#previous-entries").append(listItem);
+    clearBox();
 }
 
 /**
  * Clears the value of the user input box.
  * @function clearBox
- * @params {null}
- * @returns {null}
  */
 function clearBox() {
     $("#user-input").val("");
 }
+
+function clearList() {
+    $("#previous-entries").fadeOut(1000, function () {
+        $(this).empty().fadeIn(1000);
+    });
+}
+
+$("#hamburger").on("click", function () {
+    $("#mobile-menu").toggle();
+});
