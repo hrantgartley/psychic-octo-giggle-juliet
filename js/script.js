@@ -69,6 +69,9 @@ function convertToNato() {
 function addToList() {
     let inputText = $("#user-input").val();
     let listItem = $("<li>").addClass("list-group-item").text(inputText);
+    if (inputText === "") {
+        return;
+    }
     $("#previous-entries").append(listItem);
     clearBox();
 }
